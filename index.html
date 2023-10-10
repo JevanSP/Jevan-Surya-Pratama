@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="icon" href="https://i.ibb.co/6HYpBPY/IMG-20230712-001904-503-modified.png">
+  <title>Jevan Surya Pratama</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Londrina+Solid&family=Poppins:wght@600;900&display=swap");
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+      background-color: rgb(34, 30, 30);
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 8px;
+      color: white;
+      z-index: 1;
+    }
+
+    .logo h1 {
+      font-size: 20px;
+      padding: 0 0;
+      margin-left: 200px;
+      color: rgb(122, 217, 255);
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+    }
+
+    .nav-list li {
+      margin: 0 25px;
+    }
+
+    .nav-list a {
+      text-decoration: none;
+      color: white;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: rgb(36, 182, 240);
+    }
+
+    .Home {
+      width: 100%;
+      background: url("https://i.ibb.co/6HYpBPY/IMG-20230712-001904-503-modified.png") no-repeat;
+      background-size: 22em;
+      background-position: 52em;
+      height: 60vh;
+      padding: 10% 0;
+    }
+
+    .Home-content {
+      margin-left: 100px;
+      margin-top: 150px;
+      max-width: 600px;
+    }
+
+    .image {
+      display: none;
+      border-radius: 100%;
+    }
+
+    .Home-content h1 {
+      color: rgb(36, 182, 240);
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: -20px;
+    }
+
+    .Home-content h2 {
+      color: rgb(228, 238, 238);
+      font-size: 45px;
+      margin-bottom: -10px;
+    }
+
+    .Home-content p {
+      color: rgb(122, 217, 255);
+      font-size: 24px;
+    }
+
+    .social-links {
+      display: flex;
+    }
+
+    .social-links a {
+      width: 80px;
+      height: 80px;
+      text-align: center;
+      text-decoration: none;
+      color: #e6dddd;
+      box-shadow: 0 0 20px 10px rgba(216, 204, 204, 0.05);
+      margin: 0 20px;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.5s;
+    }
+
+    .social-links a .fab {
+      font-size: 30px;
+      line-height: 80px;
+      position: relative;
+      z-index: 10;
+      transition: color 0.5s;
+    }
+
+    .social-links a::after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: -90px;
+      left: 0;
+      background: #000;
+      background: linear-gradient(-45deg, rgb(122, 217, 255), #1cbac5);
+      position: absolute;
+      transition: 0.5s;
+    }
+
+    .social-links a:hover::after {
+      top: 0;
+    }
+
+    .social-links a:hover .fab {
+      color: #fff;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-10px);
+    }
+
+    .About {
+      height: 70vh;
+      display: flex;
+      padding: 0 17%;
+    }
+
+    .About-content {
+      margin-top: 25px;
+    }
+
+    .About-content h1 {
+      margin-top: 90px;
+      color: rgb(122, 217, 255);
+    }
+
+    .About-content p {
+      background-color: #333;
+      box-shadow: 10px 10px #fff;
+      border-radius: 5px;
+      margin-top: 40px;
+      padding: 5%;
+      color: rgb(249, 252, 251);
+    }
+
+    .About-content h2 {
+      text-align: center;
+      margin-top: 40px;
+      color: rgb(122, 217, 255);
+    }
+
+    .MySkill {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8%;
+    }
+
+    .MySkill-content h1 {
+      text-align: center;
+      font-size: 30px;
+      font-weight: 400;
+      color: rgb(122, 217, 255);
+    }
+
+    .MySkill-content .skill {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .skill .box {
+      display: flex;
+      width: 150px;
+      height: 60px;
+      padding: 7px;
+      background-color: hsl(0, 8%, 88%);
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 20px;
+    }
+
+    .skill .tools {
+      max-width: 100px;
+      height: auto;
+      margin-right: 12px;
+      margin-top: 6px;
+    }
+
+    .skill .text {
+      font-size: 14px;
+      color: #333333;
+      line-height: 2.5;
+    }
+
+    .MyProject {
+      height: 110vh;
+      display: flex;
+      padding: 0 10%;
+    }
+
+    .MyProject-content {
+      margin-top: 45px;
+    }
+
+    .MyProject-content h4 {
+      text-align: center;
+      font-size: 30px;
+      font-weight: 400;
+      color: rgb(122, 217, 255);
+    }
+
+    .MyProject-content p {
+      opacity: 0.9;
+    }
+
+    .container {
+      padding: 0;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 49% auto;
+      margin: 5px 15px;
+      gap: 20px;
+      position: relative;
+    }
+
+    .card {
+      width: 100%;
+      height: auto;
+      margin: 30px 0;
+      border-radius: 15px;
+      position: relative;
+      box-shadow: 0 15px 15px rgba(252, 252, 252, 0.1);
+      background-color: hsl(0, 8%, 88%);
+    }
+
+    .head-card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .body-card {
+      padding: 10px 15px;
+    }
+
+    .body-card h1 {
+      margin: 0;
+    }
+
+    .custom-btn {
+      width: 130px;
+      height: 40px;
+      color: #fff;
+      border-radius: 5px;
+      padding: 10px 25px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 500;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+      box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+      outline: none;
+    }
+
+    .btn-3 {
+      background: rgb(36, 182, 240);
+      background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
+      width: 130px;
+      height: 40px;
+      line-height: 42px;
+      padding: 0;
+      border: none;
+
+    }
+
+    .btn-3 span {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .btn-3:before,
+    .btn-3:after {
+      position: absolute;
+      content: "";
+      right: 0;
+      top: 0;
+      background: rgb(36, 182, 240);
+      transition: all 0.3s ease;
+    }
+
+    .btn-3:before {
+      height: 0%;
+      width: 2px;
+    }
+
+    .btn-3:after {
+      width: 0%;
+      height: 2px;
+    }
+
+    .btn-3:hover {
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .btn-3:hover:before {
+      height: 100%;
+    }
+
+    .btn-3:hover:after {
+      width: 100%;
+    }
+
+    .btn-3 span:hover {
+      color: rgba(2, 126, 251, 1);
+    }
+
+    .btn-3 span:before,
+    .btn-3 span:after {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: 0;
+      background: rgba(2, 126, 251, 1);
+      transition: all 0.3s ease;
+    }
+
+    .btn-3 span:before {
+      width: 2px;
+      height: 0%;
+    }
+
+    .btn-3 span:after {
+      width: 0%;
+      height: 2px;
+    }
+
+    .btn-3 span:hover:before {
+      height: 100%;
+    }
+
+    .btn-3 span:hover:after {
+      width: 100%;
+    }
+
+    footer {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      background-color: #1cbac5;
+      border-radius: 5px;
+      color: #ffffff;
+    }
+
+
+    @media screen and (max-width: 768px) {
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .logo h1 {
+        font-size: 13px;
+        padding: 0;
+        margin-left: 20px;
+      }
+
+      .nav-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 100px;
+        background-color: #333;
+        opacity: 0.6;
+        width: 100%;
+      }
+
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 22px;
+        width: 22px;
+        margin-right: 20px;
+      }
+
+      .hamburger .bar {
+        height: 3px;
+        width: 100%;
+        background-color: rgb(255, 254, 254);
+        transition: all 100ms ease-in-out;
+      }
+
+      .hamburger:hover {
+        cursor: pointer;
+      }
+
+      .x:nth-of-type(1) {
+        transition: all 100ms ease-in-out;
+        transform: rotate(45deg);
+        transform-origin: top left;
+        width: 28px;
+      }
+
+      .x:nth-of-type(2) {
+        transition: all 100ms ease-in-out;
+        transform-origin: center;
+        width: 0;
+      }
+
+      .x:nth-of-type(3) {
+        transition: all 100ms ease-in-out;
+        transform: rotate(-45deg);
+        transform-origin: bottom left;
+        width: 28px;
+      }
+
+      .nav-list.active {
+        display: flex;
+      }
+
+      .nav-list li {
+        margin: 15px 0;
+        text-align: center;
+        margin-right: 150px;
+      }
+
+      .Home {
+        display: flex;
+        padding: 0;
+        background: none;
+        height: 90vh;
+      }
+
+      .Home-content {
+        display: flex;
+        flex-direction: column;
+        margin-left: 50px;
+        margin-top: 45px;
+        padding: 2% 0;
+      }
+
+      .Home-content .image {
+        display: flex;
+        margin-top: 71px;
+        clip-path: circle(50%);
+        width: 180px;
+      }
+
+      .Home-content h1 {
+        font-size: 25px;
+      }
+
+      .Home-content h2 {
+        font-size: 35px;
+      }
+
+      .Home-content p {
+        font-size: 20px;
+      }
+
+      .social-links a .fab {
+        font-size: 20px;
+        line-height: 40px;
+      }
+
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        text-decoration: none;
+        margin: 0 3px;
+      }
+
+      .About {
+        height: 90vh;
+        padding: 30px;
+      }
+
+      .About-content {
+        margin-top: -30px;
+      }
+
+      .About-content h1 {
+        font-size: 25px;
+      }
+
+      .About-content p {
+        font-size: 13px;
+      }
+
+      .MySkill {
+        height: 90vh;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .MySkill-content {
+        margin-top: 35px;
+      }
+
+      .skill .box {
+        display: flex;
+        align-items: center;
+        padding: 1px 0px 0px 7px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin: 5px;
+      }
+
+      .skill .tools img {
+        margin-top: 2px;
+        width: 30px;
+      }
+
+      .skill .text {
+        font-size: 12px;
+        color: #333333;
+      }
+
+      .MySkill-content .skill {
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .MyProject {
+        height: 325vh;
+        position: relative;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .container {
+        justify-content: center;
+        display: block;
+        padding: 0;
+      }
+
+      .MyProject-content {
+        margin-top: 30px;
+      }
+
+      .MyProject-content .card {
+        width: 300px;
+      }
+
+      .head-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+    }
+
+    @media screen and (min-width: 550px) {
+      .card {
+        grid-column: span 4;
+
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="#Home">
+        <h1>Jevan Surya Pratama</h1>
+      </a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <script>
+        let navToggle = document.querySelector('.hamburger')
+        let bars = document.querySelectorAll('.bar')
+
+        function toggleHamburger(e) {
+          bars.forEach(bar => bar.classList.toggle('x'))
+        }
+
+        navToggle.addEventListener('click', toggleHamburger)
+      </script>
+    </div>
+    <ul class="nav-list" id="navList">
+      <li><a href="#Home">Home</a></li>
+      <li><a href="#About">About Me</a></li>
+      <li><a href="#MySkill">My Skill</a></li>
+      <li><a href="#MyProject">My Project</a></li>
+    </ul>
+  </nav>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+  </script>
+  <script>
+    $(document).ready(function () {
+
+      $("a").on('click', function (event) {
+
+        if (this.hash !== "") {
+
+          event.preventDefault();
+
+          var hash = this.hash;
+
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function () {
+
+            window.location.hash = hash;
+          });
+        }
+      });
+    });
+  </script>
+  <section id="Home" class="Home">
+    <div class="Home-content">
+      <div data-aos="fade-left">
+        <div class="image">
+          <img src="https://i.ibb.co/6HYpBPY/IMG-20230712-001904-503-modified.png" width="180" alt="Portofolio Image">
+        </div>
+      </div>
+      <div data-aos="fade-up-right">
+        <h1>Halo Guys, Gue</h1>
+        <h2>Jevan Surya Pratama</h2>
+        <div class="typewriter">
+          <p class="typewrite text-white" data-period="2000"
+            data-type='[ "Fornt-end Developer","UI/UX Designer","Pengangguran" ]'>
+            <span class="wrap"></span>
+          </p>
+        </div>
+        <script>
+          var TxtType = function (el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+          };
+
+          TxtType.prototype.tick = function () {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+              this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+              this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 200 - Math.random() * 100;
+
+            if (this.isDeleting) { delta /= 2; }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+              delta = this.period;
+              this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+              this.isDeleting = false;
+              this.loopNum++;
+              delta = 500;
+            }
+
+            setTimeout(function () {
+              that.tick();
+            }, delta);
+          };
+
+          window.onload = function () {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i = 0; i < elements.length; i++) {
+              var toRotate = elements[i].getAttribute('data-type');
+              var period = elements[i].getAttribute('data-period');
+              if (toRotate) {
+                new TxtType(elements[i], JSON.parse(toRotate), period);
+              }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+            document.body.appendChild(css);
+          };
+        </script>
+      </div>
+      <div data-aos="flip-left">
+        <div class="hero">
+          <div class="social-links">
+            <a href="https://www.instagram.com/jevan_spr/"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/surya_jevan?t=B4KsRp7G8pv-qabsM1VXfA&s=08"><i class="fab fa-twitter"></i></a>
+            <a
+              href="https://open.spotify.com/playlist/3lzToxfzmo4TcNZq9W1mHG?si=-NAVnXB1Tl2iXZW4BPY3sg&utm_source=copy-link"><i
+                class="fab fa-spotify"></i></a>
+            <a href="https://discord.gg/QJFxsHNs"><i class="fab fa-discord"></i></a>
+            <a href="https://wa.me/qr/W3U75TG44NVCJ1"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="About" class="About">
+    <div class="About-content">
+      <div data-aos="fade-down-right">
+        <h1>Tentang Gue</h1>
+      </div>
+      <div data-aos="zoom-in-right">
+        <p>Yo,nama gue Jevan Surya Pratama yang berasal dari kota kecil Jawa Timur yaitu Pacitan. Gue lahir pada 21 Juni
+          2006 anak pertama dari dua bersaudara. Gue tuh sebenernya anak yang
+          suka banget hal-hal berhubungan sama dunia IT dan gue juga suka dalam hal desain digital.
+          Gue sekolah di SMK Negeri 1 Pacitan, ambil jurusan Rekayasa Perangkat Lunak alias RPL. Keren kan?
+          <br><br>
+          Hobi gue yaitu mainin hati dan perasaan cewek atau engga maki orang dan cita-cita gue ntar dewasa pengen jadi
+          MenKominfo atau engga jadi Full-stack Enginner. Gue ikut organisasi
+          masyarakat Pemuda Pancasila sejak 2021 dengan pangkat KOPASJAT (Komandan Pasukan Hajatan). Suatu kebiasan gue
+          adalah
+          menyibukkan diri gue sendiri aja sih.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section id="MySkill" class="MySkill">
+    <div class="MySkill-content">
+      <div data-aos="fade-down">
+        <h1>Tech Stack & Tools</h1>
+      </div>
+      <div class="skill">
+        <div data-aos="fade-up-right">
+          <div class="box">
+            <div class="tools">
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174854.png" width="50" alt="Gambar Box">
+            </div>
+            <div class="text">
+              <p>HTML</p>
+            </div>
+          </div>
+        </div>
+        <div data-aos="fade-up-right">
+          <div class="box">
+            <div class="tools">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/800px-CSS3_logo.svg.png"
+                width="50" alt="Gambar Box">
+            </div>
+            <div class="text">
+              <p>CSS</p>
+            </div>
+          </div>
+        </div>
+        <div data-aos="fade-up-right">
+          <div class="box">
+            <div class="tools">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV9gnLSLIN6zRaEZZVruFv0WMWXuHiLV-Zgg&usqp=CAU"
+                width="50" alt="">
+            </div>
+            <div class="text">
+              <p>JavaScript</p>
+            </div>
+          </div>
+        </div>
+        <div data-aos="fade-up-right">
+          <div class="box">
+            <div class="tools">
+              <img src="https://silksoftwarehouse.com/wp-content/uploads/2020/06/Bootstrap_logo.svg.png" width="50"
+                alt="Canva">
+            </div>
+            <div class="text">
+              <p>Bootstrap</p>
+            </div>
+          </div>
+        </div>
+        <div data-aos="fade-up-right">
+          <div class="box">
+            <div class="tools">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Figma-1-logo.png" width="60"
+                alt="Gambar Box">
+            </div>
+            <div class="text">
+              <p>Figma</p>
+            </div>
+          </div>
+        </div>
+        <div data-aos="fade-up-right">
+          <div class="box">
+            <div class="tools">
+              <img src="https://freelogopng.com/images/all_img/1656733637logo-canva-png.png" width="50" alt="Canva">
+            </div>
+            <div class="text">
+              <p>Canva</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="MyProject" class="MyProject">
+    <div class="MyProject-content">
+      <div data-aos="fade-down-right">
+        <h4>My Project</h4>
+      </div>
+      <div class="container">
+        <div data-aos="flip-up">
+          <div class="card">
+            <div class="head-card">
+              <img
+                src="https://i.ibb.co/Jp88PFH/screencapture-figma-proto-qrv-GHVn-U8q-P710ed-FHh-BPc-Jevan-Surya-Pratama-2023-10-06-15-23-11.png"
+                alt="screencapture-figma-proto-qrv-GHVn-U8q-P710ed-FHh-BPc-Jevan-Surya-Pratama-2023-10-06-15-23-11">
+            </div>
+            <div class="body-card">
+              <h1>Desain Website Figma</h1>
+              <p>UI/UX Design Website yang bertemakan Open Trip Gunung yang ada Indonesia.</p>
+              <a
+                href="https://www.figma.com/file/qrvGHVnU8qP710edFHhBPc/Jevan-Surya-Pratama?type=design&node-id=0%3A1&mode=design&t=50w25WreWssRzLY7-1">
+                <button class="custom-btn btn-3"><span>Lebih Detail</span></button></a>
+            </div>
+          </div>
+        </div>
+        <div data-aos="flip-up">
+          <div class="card">
+            <div class="head-card">
+              <img src="https://i.ibb.co/vJGPKd3/1.png" alt="1">
+            </div>
+            <div class="body-card">
+              <h1>Desain Produk Canva</h1>
+              <p>Desain Produk Bricket Arang yang dibuat oleh kamto yang gue dukung. </p>
+              <a
+                href="https://www.canva.com/design/DAFvCKhsR04/idjBjA6LRZzj2nSTwpZxjA/edit?utm_content=DAFvCKhsR04&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">
+                <button class="custom-btn btn-3"><span>Lebih Detail</span></button></a>
+            </div>
+          </div>
+        </div>
+        <div data-aos="flip-up">
+          <div class="card">
+            <div class="head-card">
+              <img src="https://i.ibb.co/gS2YCc7/Jevan-Surya-Pratamapng.png" alt="Jevan-Surya-Pratamapng">
+            </div>
+            <div class="body-card">
+              <h1>Portofolio Diri Saya Sendiri</h1>
+              <p>Portofolio tentang diriku dibuat mengggunakan HTML, CSS, dan JavaScript. </p>
+              <a href="#Home">
+                <button class="custom-btn btn-3"><span>Lebih Detail</span></button></a>
+            </div>
+          </div>
+        </div>
+        <div data-aos="flip-up">
+          <div class="card">
+            <div class="head-card">
+              <img src="https://i.ibb.co/xCqXvc9/screencapture-instagram-jevan-spr-2023-10-06-21-29-21.png"
+                alt="screencapture-instagram-jevan-spr-2023-10-06-21-29-21">
+            </div>
+            <div class="body-card">
+              <h1>Follow IG gua dong bre</h1>
+              <p>Tak kenal maka tak akan akrab, kenalan yuk sama om nanti aku folback kamu. </p>
+              <a href="https://www.instagram.com/jevan_spr/">
+                <button class="custom-btn btn-3"><span>Follow</span></button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <p>Author : Jevan Surya Pratama<br>
+          jevandut123@gmail.com</p>
+      </footer>
+    </div>
+  </section>
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navList = document.getElementById('navList');
+
+
+    hamburger.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+      const link = document.querySelector(`a[href="#${section.id}"]`);
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navList.classList.remove('active');
+        section.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+  </script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+
+</html>
